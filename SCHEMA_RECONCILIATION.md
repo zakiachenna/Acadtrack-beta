@@ -117,3 +117,24 @@ Before the migration is applied:
 🟡 PHASE 2 — SCHEMA RECONCILIATION IN PROGRESS
 
 No database changes have been made as part of this reconciliation.
+
+## Original Prototype Code Evidence — 23 October 2026
+
+Source reviewed: `student-profile.html` (existing prototype).
+
+### Confirmed observations
+
+- The prototype uses separate JavaScript fields `firstName` and `lastName` for student profile data.
+- Other observed student fields include `id`, `email`, `phone`, `group`, `major`, and `academicYear`.
+- The page uses a `defaultStudentProfile` object and browser `localStorage` for prototype data.
+- The existing prototype includes a local student-record update function named `updateStudentDatabaseRecord()`.
+- The prototype uses Base64 encoding/decoding (`btoa()` / `atob()`) for a demonstration password mechanism; this is not secure authentication.
+- The prototype includes a demonstration session fallback. Neither this fallback nor the password mechanism should be carried into the real Pilot authentication implementation.
+
+### Schema reconciliation implication
+
+- Existing code evidence supports considering separate `first_name` and `last_name` database fields, consistent with `BLUEPRINT.md`, rather than assuming the migration's single `full_name` field is final.
+- JavaScript field names are not automatically database column names. Compatibility with other prototype pages remains to be reviewed.
+- This is evidence and a preliminary recommendation only, NOT approval to modify the migration or apply it to Supabase.
+
+Status: REVIEW EVIDENCE ONLY — SCHEMA DECISION STILL PENDING.

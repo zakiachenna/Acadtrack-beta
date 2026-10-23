@@ -138,3 +138,24 @@ Source reviewed: `student-profile.html` (existing prototype).
 - This is evidence and a preliminary recommendation only, NOT approval to modify the migration or apply it to Supabase.
 
 Status: REVIEW EVIDENCE ONLY — SCHEMA DECISION STILL PENDING.
+
+## Department Admin Users Prototype Evidence — 23 October 2026
+
+Source reviewed: `dept-admin-users.html` (existing prototype).
+
+### Confirmed observations
+
+- The page contains student and teacher user tables.
+- Student names are displayed as complete names directly in HTML table cells.
+- Searches for the exact identifiers `firstName`, `first_name`, `lastName`, and `fullName` returned zero matches in this file.
+- The page also contains references to `name` and `studentName`.
+- The observed name display does not establish how names must be stored in the database.
+
+### Schema reconciliation implication
+
+- `student-profile.html` uses separate `firstName` and `lastName` JavaScript fields, while `dept-admin-users.html` displays complete names in its HTML tables.
+- These observations reflect different prototype representations and do not establish a database schema requirement.
+- The choice between separate `first_name` / `last_name` columns and the migration's `full_name` column remains pending.
+- No migration changes or Supabase operations are authorized by this evidence.
+
+Status: REVIEW EVIDENCE ONLY — SCHEMA DECISION STILL PENDING.

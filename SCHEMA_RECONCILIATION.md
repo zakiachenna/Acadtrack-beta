@@ -159,3 +159,32 @@ Source reviewed: `dept-admin-users.html` (existing prototype).
 - No migration changes or Supabase operations are authorized by this evidence.
 
 Status: REVIEW EVIDENCE ONLY — SCHEMA DECISION STILL PENDING.
+
+## Preliminary Schema Decisions — 30 October 2026
+
+Status: OWNER-APPROVED PRELIMINARY DESIGN DECISIONS — NOT APPROVED FOR IMPLEMENTATION.
+
+### P2-001 — Profile name fields
+
+- Preliminary decision: Prefer separate `first_name` and `last_name` fields, consistent with `BLUEPRINT.md`.
+- Prototype evidence: `student-profile.html` uses separate `firstName` and `lastName` values and combines them for display.
+- `assets/js/app.js` uses a combined `name` value for demo users.
+- Searches for `display_name` in `student-profile.html`, `assets/js/app.js`, and `dept-admin-users.html` returned zero matches.
+- `display_name` remains a proposed Blueprint field. Its purpose, required/optional status, and population rules are unresolved.
+- The migration's existing `full_name` field remains unchanged.
+- Compatibility review and final implementation approval remain pending.
+
+### P2-002 — Profile account status
+
+- Preliminary decision: Retain `profiles.status` from `BLUEPRINT.md` as the design reference.
+- The existing migration uses `profiles.is_active` (boolean).
+- `dept-admin-users.html` displays `Active` badges, but this does not establish a database field mapping.
+- `BLUEPRINT.md` does not define the allowed values of `profiles.status`.
+- The `students.status` values (`active`, `repeating`, `suspended`, `graduated`) describe academic student status and must not be assumed to define account status.
+- Allowed account-status values, behavior, and security implications remain unresolved.
+- The migration's `is_active` field remains unchanged.
+
+### Implementation restriction
+
+Both decisions are preliminary and reversible. No migration edits, SQL execution, Supabase schema changes, or deployment are authorized by this documentation. Phase 2 schema reconciliation remains in progress.
+  
